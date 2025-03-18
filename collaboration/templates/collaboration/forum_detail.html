@@ -1,0 +1,203 @@
+
+{% load static crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ forum.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .forum-header {
+            background-color: #1b92fa;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .forum-header h1 {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .forum-header p {
+            font-size: 18px;
+            font-weight: lighter;
+        }
+
+        .message-box {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .message-box:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .message-box .meta {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .message-box strong {
+            color: #2c3e50;
+        }
+
+        .message-form {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .message-form h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e3d58;
+        }
+
+        .message-form .form-control {
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .message-form textarea {
+            resize: none;
+        }
+
+        .message-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #1e3d58;
+            border-color: #1e3d58;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #34495e;
+            border-color: #34495e;
+        }
+
+        .btn-outline-primary {
+            border-radius: 8px;
+            font-size: 14px;
+            color: #1e3d58;
+            border-color: #1e3d58;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #1e3d58;
+            color: white;
+            border-color: #1e3d58;
+        }
+
+        .alert-info {
+            background-color: #ecf0f1;
+            border-color: #dcdfe1;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .footer a {
+            color: #1e3d58;
+        }
+
+        .footer a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+
+        <!-- Forum Header -->
+        <div class="forum-header text-center mb-4">
+            <h1>{{ forum.title }}</h1>
+            <p>{{ forum.description }}</p>
+        </div>
+
+        <!-- Messages Section -->
+        <div class="mb-4">
+            <h3 class="mb-3">Messages</h3>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message-box">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <strong>{{ message.sender.username }}</strong>
+                            <span class="meta">{{ message.created_at|date:"M d, Y H:i" }}</span>
+                        </div>
+                        {% if message.text %}
+                            <p class="mt-2">{{ message.text }}</p>
+                        {% endif %}
+                        {% if message.file %}
+                            <a href="{{ message.file.url }}" class="btn btn-outline-primary btn-sm mt-2" download>
+                                Download Attached File
+                            </a>
+                        {% endif %}
+                        {% if message.sender == user or user.is_superuser %}
+                            <div class="mt-2">
+                                <a href="{% url 'edit_message' message.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{% url 'delete_message' message.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info" role="alert">
+                    No messages yet. Be the first to post!
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Post Message Section -->
+        <div class="message-form">
+            <h3>Post a Message</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.text|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    <label for="file" class="form-label">Attach a File</label>
+                    <input type="file" class="form-control" name="file" id="file" accept=".jpg, .jpeg, .png, .pdf, .docx">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Post Message</button>
+            </form>
+        </div>
+
+        <!-- Back to Forums Button -->
+        <div class="mt-4 text-center">
+            <a href="{% url 'forum_home' %}" class="btn btn-secondary">Back to Forums</a>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 UniProject. <a href="#">Privacy Policy</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+<h1>Forums</h1>
+<ul>
+    {% for forum in forums %}
+        <li>
+            <a href="{% url 'forum_detail' forum.id %}">{{ forum.title }}</a> - 
+            Created by {{ forum.created_by.username }} on {{ forum.created_at }}
+        </li>
+    {% endfor %}
+</ul>

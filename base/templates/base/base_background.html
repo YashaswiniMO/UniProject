@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  {{ block.super }}
+  <style>
+    /* Main Background */
+    .background {
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6)),
+                  url("{% static 'base/images/hero-bg.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Footer Styling */
+    footer {
+      background: #f8f9fa;
+      padding: 1rem 0;
+      border-top: 1px solid #e9ecef;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+
+    /* Overlay Text Design */
+    .overlay-text {
+      text-align: center;
+      color: #333;  /* Darker text for better contrast on light background */
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .overlay-text h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .overlay-text p {
+      font-size: 1.2rem;
+    }
+  </style>
+{% endblock styles %}
+
+{% block openBodyTag %}
+  <body class="background">
+{% endblock openBodyTag %}
+
+{% block content %}
+  <div class="overlay-text">
+    <h1>Welcome to UniProject</h1>
+    <p>Your Gateway to Digital Innovation and Collaboration</p>
+    <div class="mt-4">
+      <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-3" style="font-family: 'Poppins', sans-serif;">
+        Login
+      </a>
+      <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg" style="font-family: 'Poppins', sans-serif;">
+        Get Started
+      </a>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block footer %}
+  {{ block.super }}
+  <footer class="text-center">
+    <p>&copy; {{ current_year }} UniProject. All rights reserved.</p>
+    <p>Empowering student innovation and collaboration.</p>
+  </footer>
+{% endblock footer %}

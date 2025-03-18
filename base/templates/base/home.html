@@ -1,0 +1,142 @@
+{% extends 'base/base_background.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-lg-6 text-center">
+      <h1 class="display-3 fw-bold text-primary" style="font-family: 'Poppins', sans-serif;">
+        <span style="background: linear-gradient(to right, #fc7025d2, #cb5811); -webkit-background-clip: text; color: transparent;">UNIPROJECT</span>
+      </h1>
+      <h2 class="text-dark" style="font-family: 'Roboto', sans-serif;">Digital Project Hub for Universities</h2>  
+      <h3 class="fs-4 mt-3 text-muted" style="font-family: 'Roboto', sans-serif;">"Empowering Student Innovation"</h3>
+      <p class="text-secondary mb-4">Your Ultimate Project Management Solution: Simplify, Organize, Collaborate</p>
+      <div class="mt-5">
+        <a href="{% url 'login' %}" class="btn btn-lg shadow-lg text-white" 
+           style="background: linear-gradient(to right, #6a11cb, #2575fc); border: none; font-family: 'Poppins', sans-serif;">
+          Login
+        </a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary btn-lg shadow-lg" 
+           style="border-color: #6a11cb; color: #2575fc; font-family: 'Poppins', sans-serif;">
+          Get Started
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <img 
+        src="{% static 'base/images/project_management.png' %}" 
+        alt="Project Management"
+        class="img-fluid rounded-circle shadow-lg"
+        style="max-width: 90%; animation: fadeIn 1s ease-in;">
+    </div>
+  </div>
+</div>
+
+
+<!-- Categories and Projects Section -->
+<div class="container my-5 py-5" style="background: #f7f8fc; border-radius: 15px;">
+  <h2 class="text-center fw-bold text-dark mb-5" style="font-family: 'Poppins', sans-serif;">Trending Projects</h2>
+  <div class="row gy-4">
+    <!-- Artificial Intelligence Category -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg" style="border-radius: 15px; background-color: #ffffff; transition: transform 0.3s;">
+        <div class="card-body text-center">
+          <i class="bi bi-cpu-fill text-primary fs-1 mb-3"></i>
+          <h3 class="h5 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Artificial Intelligence</h3>
+          <div class="mt-3">
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Chatbot for Healthcare</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Predictive Analytics for E-commerce</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">AI-powered Language Translator</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Development Category -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg" style="border-radius: 15px; background-color: #ffffff; transition: transform 0.3s;">
+        <div class="card-body text-center">
+          <i class="bi bi-browser-edge text-success fs-1 mb-3"></i>
+          <h3 class="h5 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Web Development</h3>
+          <div class="mt-3">
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">E-commerce Platform</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Portfolio Builder</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Interactive Blogging Website</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Applications Category -->
+    <div class="col-md-4">
+      <div class="card border-0 shadow-lg" style="border-radius: 15px; background-color: #ffffff; transition: transform 0.3s;">
+        <div class="card-body text-center">
+          <i class="bi bi-phone-fill text-info fs-1 mb-3"></i>
+          <h3 class="h5 fw-bold text-dark" style="font-family: 'Poppins', sans-serif;">Mobile Applications</h3>
+          <div class="mt-3">
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Fitness Tracking App</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Language Learning App</p>
+              </div>
+            </div>
+            <div class="card border-0 mb-3 shadow-sm" style="border-radius: 10px; background-color: #f4f6f9;">
+              <div class="card-body">
+                <p class="text-muted">Expense Management App</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hover Effect on Cards -->
+    <style>
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Fade-in animation for images */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+  </div>
+</div>
+{% endblock %}
