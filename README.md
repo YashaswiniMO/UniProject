@@ -3,11 +3,11 @@ Offers a transformative solution.
 It is a platform designed to leverage the power of technology to create an integrated digital ecosystem for students from diverse academic institutions. 
 The platform enables students to upload, showcase, and share their academic projects, fostering a culture of innovation and collaboration.
 
-# PROBLEM STATEMENT DETAILS
+# Problem Statement Details
 
-   “Online Integrated Platform for Projects Taken up by the Students of Various Universities/Colleges” 
+      “Online Integrated Platform for Projects Taken up by the Students of Various Universities/Colleges” 
 
-# OBJECTIVES 
+# Objectives
 • To develop a centralized platform for project uploads and showcases. 
 • To facilitate inter-university collaboration through forums, chat, and file sharing. 
 • To implement plagiarism detection to ensure submission originality. 
