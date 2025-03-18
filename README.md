@@ -45,7 +45,7 @@ The platform enables students to upload, showcase, and share their academic proj
 
 ## 1. **Clone the repository:**
    ```
-   git clone 
+   git clone https://github.com/YashaswiniMO/UniProject.git
    cd National-Project-Management
    ```
 ## 2. Create a virtual environment (optional but recommended):
